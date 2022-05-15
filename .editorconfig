@@ -1,0 +1,16 @@
+# .editorconfig Es una especificación que intenta definir una serie de configuraciones acerca del estilo de un proyecto de forma que cualquier persona que participe en él pueda hacerlo siguiendo las reglas definidas.
+
+root = true 
+
+[*]
+charset = utf-8 
+indent_style = space 
+indent_size = 2
+insert_final_newline = true 
+trim_trailing_whitespace = true 
+max_line_lenght = 120
+
+[*.md]
+trim_trailing_whitespace = false 
+max_line_lenght = 140
+

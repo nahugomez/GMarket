@@ -1,0 +1,154 @@
+$primary : #C20000;
+$smargin: 50px;
+$gap: 20px;
+$btn-border-radius: 30px;
+$h2-font-size: 2.5rem;
+$btn-transition: color .3s ease-in-out, background-color .3s ease-in-out, border-color .3s ease-in-out, box-shadow .3s ease-in-out;
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+/* UTILITY */
+.hover-transition{
+    transition: 0.3s;
+    &:hover{
+        opacity: 0.5;
+    }
+}
+
+/* NAVBAR */
+.navbar-brand{
+    font-size: 2.5rem;
+    @extend .hover-transition;
+}
+
+.nav-item{
+    font-size: 1.25rem;
+    @extend .hover-transition;
+}
+
+/* HEADER */
+.header{
+    height: 70vh;
+    &Title{
+        font-size: 4rem;
+    }
+    @media only screen and (max-width: 800px){
+        height: auto;
+        margin: $smargin 0;
+        &Title{
+            font-size: 3rem;
+        }
+    }
+}
+
+/* INFO GMarket */
+.infoGM{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: $gap;
+    align-items: center;
+    @media only screen and (max-width: 800px){
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-row-gap: $gap;
+        margin-bottom: $smargin;
+    }
+    &Img{
+        width: 100%;
+        @extend .hover-transition;
+    }
+}
+
+/* IMG DIVISOR */
+.imgDivisor{
+    margin: $smargin 0;
+    @extend .hover-transition;
+    @media only screen and (max-width: 800px){
+        display: none;
+    }
+}
+
+/* MANUAL */
+.manual{
+    &Item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 40px;
+        &:last-child{
+            margin-bottom: 0;
+        }
+        @media only screen and (max-width: 800px){
+            flex-direction: column;
+        }
+    }
+    &Text{
+        margin-left: 20px;
+        max-width: 50%;
+        @media only screen and (max-width: 800px){
+            margin-left: 0;
+            margin-top: 20px;
+            max-width: 100%;
+        }
+    }
+    &Img{
+        @extend .hover-transition;
+        @media only screen and (max-width: 800px){
+            width: 100%;
+        }
+    }
+}
+
+/* APPLICATION */
+.app {
+    margin-top: $smargin;
+    &Up{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-column-gap: $gap;
+        @media only screen and (max-width: 800px){
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+            grid-row-gap: $gap;
+        }
+    }
+    &Load{
+        border: 3px solid #C20000;
+        border-radius: 30px;
+        padding: 20px;
+        &Inputs > input {
+            margin-bottom: 8px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+    &Change{
+        @extend .appLoad;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        &Inputs > input {
+            margin-bottom: 8px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+    &Search{
+        @extend .appLoad;
+        &Inputs > input {
+            margin-bottom: 8px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+    &Sell{
+        @extend .appLoad;
+        &Inputs > input {
+            margin-bottom: 8px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+}
