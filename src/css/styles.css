@@ -7916,3 +7916,7 @@ textarea.form-control-lg {
     margin-bottom: 8px; }
     .appSellInputs > input:last-child {
       margin-bottom: 0; }
+
+.article {
+  border: 3px solid #C20000;
+  border-radius: 30px; }

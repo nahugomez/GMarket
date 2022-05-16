@@ -111,7 +111,7 @@ $btn-transition: color .3s ease-in-out, background-color .3s ease-in-out, border
         }
     }
     &Load{
-        border: 3px solid #C20000;
+        border: 3px solid $primary;
         border-radius: 30px;
         padding: 20px;
         &Inputs > input {
@@ -151,4 +151,11 @@ $btn-transition: color .3s ease-in-out, background-color .3s ease-in-out, border
             }
         }
     }
+}
+
+/* ARTICLE */
+
+.article{
+    border: 3px solid $primary;
+    border-radius: 30px;
 }

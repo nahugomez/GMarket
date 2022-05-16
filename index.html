@@ -133,7 +133,6 @@
                     <h3 class="fw-bold text-center"><span class="text-primary">M</span>odificar Productos<span class="text-primary">.</span></h3>
                     <div class="appChangeInputs">
                         <input type="text" class="form-control" id="changeCode" placeholder="Ingrese el código del producto">
-                        <input type="text" class="form-control" id="changeName" placeholder="Ingrese el nombre del producto">
                         <input type="tel" class="form-control" id="changePrice" placeholder="Ingrese el precio del producto">
                         <input type="tel" class="form-control" id="changeStock" placeholder="Ingrese el stock del producto">
                         <button type="submit" class="btn btn-primary w-100 mt-3 fw-bold">Modificar producto</button>
@@ -151,18 +150,19 @@
             <form class="appSell">
                 <h3 class="fw-bold text-center"><span class="text-primary">V</span>enta de Productos<span class="text-primary">.</span></h3>
                 <div class="appSellInputs">
-                    <input type="text" class="form-control" id="SellCode" placeholder="Ingrese el código del producto">
-                    <input type="tel" class="form-control" id="SellUnit" placeholder="Ingrese la cantidad vendida">
+                    <input type="text" class="form-control" id="sellCode" placeholder="Ingrese el código del producto">
+                    <input type="tel" class="form-control" id="sellUnits" placeholder="Ingrese la cantidad vendida">
                 </div>
                 <button type="submit" class="btn btn-primary w-100 mt-3 fw-bold">Cargar venta</button>
             </form>
+            <div class="article container text-center mt-3 py-3"></div>
         </div>
         <!-- END APPLICATION-->
 
         <!-- SECTION: INVENTORY -->
         <section class="container inventory my-5">
             <h2 class="fw-bold text-center"><span class="text-primary">I</span>nventario<span class="text-primary">.</span></h2>
-            <table class="table table-striped table-hover table-bordered">
+            <table class="table table-striped table-hover table-bordered inventoryTable">
                 <thead>
                   <tr>
                     <th scope="col">Codigo</th>
@@ -172,7 +172,7 @@
                     <th scope="col">Total Vendido</th>
                   </tr>
                 </thead>
-                <tbody id="inventarioItems"></tbody>
+                <tbody class="inventoryItems"></tbody>
               </table>
         </section>
         <!-- END SECTION-->
@@ -184,6 +184,7 @@
             <p class="text-light fw-bold mb-0">Web desarrollada por Nahuel Gomez</p>
         </div>
     </footer>
+    <audio src="" id="success"></audio>
     <!-- END FOOTER-->
     <!-- ETIQUETAS SCRIPT -->
     <script src="src/js/library/modernizr-3.11.8.min.js"></script>
