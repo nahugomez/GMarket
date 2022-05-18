@@ -8,3 +8,9 @@
 ### V2.0:
 - Funcionalidad añadida a la web con JavaScript
 ---
+### V2.1:
+Las librerías presentes en esta versión son
+- Modernizr: Serie de instrucciones que logran detectar el navegador con el que está visualizando la página el usuario, y adapta los estilos que la pagina usa para que ese navegador los interprete correctamente. 
+- Toastify: Notificaciones más agradables y menos invasivas para los usuarios.
+- ScrollReveal: Ayuda a revelar de una forma interactiva las secciones a medida que el usuario scrollea por la web
+***Las librerias añadidas garantizan un buen funcionamiento en todos los navegadores, y una interfaz más amigable para los usuarios que utilicen la web.***

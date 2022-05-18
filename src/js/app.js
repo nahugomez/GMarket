@@ -5,7 +5,7 @@
 | |\  | (_| | | | | |_| |  __/ | | |_| | (_) | | | | | |  __// / 
 |_| \_|\__,_|_| |_|\__,_|\___|_|  \____|\___/|_| |_| |_|\___/___|
 
-CURSO DE JAVASCRIPT - Optimizando el proyecto final
+CURSO DE JAVASCRIPT - Incorporando Librerías
 Explicación del código en caso de ser necesario en archivo CODE.md 
 En la carpeta test hay un lote de prueba para probar el código
 
@@ -39,7 +39,77 @@ let success = () => {
     audio.setAttribute("src", "src/audio/success.mp3");
     audio.play();
 }
+
+let ToastifyAlert = (msg) => {
+    Toastify({
+        text: msg,
+        duration: 3000,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+        style: {
+            background: "#c20000"
+        }
+    }).showToast()
+}
+
+/* =================== SCROLL REVEAL ================= */
+ScrollReveal().reveal('.infoGM', {
+    duration: 3000,
+    origin: 'left',
+    distance: '200px',
+    delay: 1000
+});
+
+ScrollReveal().reveal('.header', {
+    duration: 3000,
+    origin: 'left',
+    distance: '200px'
+});
+
+ScrollReveal().reveal('.imgDiv', {
+    duration: 3000,
+    scale: 0.85
+});
+
+ScrollReveal().reveal('.manualItem', {
+    duration: 3000,
+    scale: 0.85,
+    interval: 600
+});
+
+ScrollReveal().reveal('.appTitle', {
+    duration: 3000,
+    origin: 'left',
+    distance: '200px'
+});
+
+ScrollReveal().reveal('.appLoad', {
+    duration: 3000,
+    scale: 0.85,
+});
+
+ScrollReveal().reveal('.appChange', {
+    duration: 3000,
+    scale: 0.85,
+});
+
+ScrollReveal().reveal('.appSearch', {
+    duration: 3000,
+    scale: 0.85,
+});
+
+ScrollReveal().reveal('.appSell', {
+    duration: 3000,
+    scale: 0.85,
+});
+
+
+/* =================== SCROLL REVEAL ================= */
+
 /* =================== USER EXPERIENCE ================= */
+
+
 
 /* =================== MUESTRA ARTICULOS ================= */
 
@@ -93,10 +163,12 @@ function cargaArticulos(e) {
         articulos.push(articulo),
         success(),
         actualizarStorage(),
+        ToastifyAlert("Datos cargados correctamente, corrobore la tabla"),
         appLoad.reset(),
         muestraInventario(articulos)
     ) : (
-        alert("Ingrese datos válidos")
+        ToastifyAlert("Ingrese datos válidos"),
+        appLoad.reset()
     )
 
     console.log(articulos);
@@ -123,7 +195,7 @@ function modificaArticulos(e) {
     modificado.innerHTML != "" && (modificado.innerHTML = "");
 
     if (stock == "" && precio == "" || code == "") {
-        alert("Ingrese datos válidos");
+        ToastifyAlert("Ingrese datos válidos");
         appChange.reset();
         return; //Se realizó con IF porque con operador ternario no se puede colocar return.
     }
@@ -134,6 +206,7 @@ function modificaArticulos(e) {
         precio != "" && (articulos[index].precio = precio),
 
         success(),
+        ToastifyAlert("Articulo modificado"),
         actualizarStorage(),
         muestraInventario(articulos),
 
@@ -143,7 +216,7 @@ function modificaArticulos(e) {
                                 <p>Precio del Artículo: $${articulos[index].precio}</p>
                                 <p class="mb-0">Total Vendido: $${articulos[index].totalVendido}</p>`
 
-    ) : (alert("No se encontro el articulo"))
+    ) : (ToastifyAlert("No se encontró el artículo"));
 
 
 
@@ -179,8 +252,9 @@ function buscaArticulo(e) {
                                   <p>Stock del Artículo: ${articulos[index].stock}</p>
                                   <p class="mb-0">Total Vendido: ${articulos[index].totalVendido}</p>`,
             encontrado.append(articulo),
-            success()
-        ) : (alert("No se encontró el articulo"))
+            success(),
+            ToastifyAlert("Articulo encontrado")
+        ) : (ToastifyAlert("No se encontró el artículo"))
     ) : (
         index = articulos.map((art) => art.codigo).indexOf(code.toUpperCase()),
         (index != -1) ? (
@@ -190,8 +264,9 @@ function buscaArticulo(e) {
                                   <p>Stock del Artículo: ${articulos[index].stock}</p>
                                   <p class="mb-0">Total Vendido: ${articulos[index].totalVendido}</p>`,
             encontrado.append(articulo),
+            ToastifyAlert("Articulo encontrado"),
             success()
-        ) : (alert("No se encontró el articulo"))
+        ) : (ToastifyAlert("No se encontró el artículo"))
     )
 
     appSearch.reset();
@@ -214,7 +289,7 @@ function ventaArticulos(e) {
     let vendido = document.querySelector(".article");
 
     if (code == "" || units == "" || units <= 0) {
-        alert("Ingrese datos validos");
+        ToastifyAlert("Ingrese datos válidos");
         appSell.reset();
         return;
     }
@@ -222,7 +297,7 @@ function ventaArticulos(e) {
     let index = articulos.map((art) => art.codigo).indexOf(code.toUpperCase());
     console.log(index);
 
-    index != -1 && (
+    index != -1 ? (
         articulos[index].totalVendido += articulos[index].precio * units,
         articulos[index].stock -= units,
 
@@ -234,7 +309,10 @@ function ventaArticulos(e) {
                             <p class="mb-0">Total Vendido: ${articulos[index].totalVendido}</p>`,
     
         success(),
+        ToastifyAlert("Venta cargada exitosamente"),
         muestraInventario(articulos)
+    ) : (
+        ToastifyAlert("No se encontró el artículo")
     )
 
     
