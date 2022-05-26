@@ -1,0 +1,26 @@
+[
+    {
+        "codigo": "000PDRF",
+        "nombre": "PASTILLAS DRF 12u",
+        "precio": 450,
+        "stock" : 50
+    },
+    {
+        "codigo": "000GBKN",
+        "nombre": "GOMITAS BILLIKEN 800g",
+        "precio": 640,
+        "stock" : 70
+    },
+    {
+        "codigo": "000CBKN",
+        "nombre": "CARAMELOS BILLIKEN 200u",
+        "precio": 450,
+        "stock" : 63
+    },
+    {
+        "codigo": "000AARB",
+        "nombre": "ALFAJORES ARRABAL 12u",
+        "precio": 1620,
+        "stock" : 30
+    }
+]

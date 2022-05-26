@@ -5,8 +5,9 @@
 | |\  | (_| | | | | |_| |  __/ | | |_| | (_) | | | | | |  __// / 
 |_| \_|\__,_|_| |_|\__,_|\___|_|  \____|\___/|_| |_| |_|\___/___|
 
-CURSO DE JAVASCRIPT - Incorporando Librerías
+CURSO DE JAVASCRIPT - AJAX y Fetch
 Explicación del código en caso de ser necesario en archivo CODE.md 
+Explicación del proyecto en README.md
 En la carpeta test hay un lote de prueba para probar el código
 
 */
@@ -29,9 +30,33 @@ let articulos = JSON.parse(localStorage.getItem("articulosAlmacenados")) || [];
 let actualizarStorage = () => {
     articulosJSON = JSON.stringify(articulos);
     localStorage.setItem("articulosAlmacenados", articulosJSON);
-    return;
 }
 /* =================== STORAGE ================= */
+
+/* =================== CARGA ARTICULOS JSON ================= */
+let information = async () => {
+    const response = await fetch('/src/json/articles.json');
+    const arrayJSON = await response.json();
+    let articleLoad;
+    arrayJSON.forEach(element => {
+        let codigo = element.codigo;
+        let nombre = element.nombre;
+        let precio = element.precio;
+        let stock = element.stock;
+        let index = articulos.map((art) => art.codigo).indexOf(codigo.toUpperCase());
+        console.log(index);
+        if(index == -1){
+            articleLoad = new Articulo(codigo,nombre,precio,stock);
+            articulos.push(articleLoad);
+        }
+        console.log(articulos);
+    });
+    muestraInventario(articulos);
+}
+information();
+/* =================== CARGA INFO JSON ================= */
+
+
 
 /* =================== USER EXPERIENCE ================= */
 let success = () => {
@@ -40,6 +65,7 @@ let success = () => {
     audio.play();
 }
 
+/* =================== TOASTIFY ================= */
 let ToastifyAlert = (msg) => {
     Toastify({
         text: msg,
@@ -52,6 +78,7 @@ let ToastifyAlert = (msg) => {
         }
     }).showToast()
 }
+/* =================== TOASTIFY ================= */
 
 /* =================== SCROLL REVEAL ================= */
 ScrollReveal().reveal('.infoGM', {
@@ -106,10 +133,7 @@ ScrollReveal().reveal('.appSell', {
 
 
 /* =================== SCROLL REVEAL ================= */
-
 /* =================== USER EXPERIENCE ================= */
-
-
 
 /* =================== MUESTRA ARTICULOS ================= */
 
@@ -310,6 +334,7 @@ function ventaArticulos(e) {
     
         success(),
         ToastifyAlert("Venta cargada exitosamente"),
+        actualizarStorage(),
         muestraInventario(articulos)
     ) : (
         ToastifyAlert("No se encontró el artículo")

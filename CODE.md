@@ -11,17 +11,34 @@ Se crea la estructura de un objeto que contendra las propiedades correspondiente
 # STORAGE
 En caso de que el contenido de la "key" **articulosAlmacaenados** del localStorage tenga un "value" vacío, entonces la variable **articulos** se inicializará como un array vacío. Caso contrario, se cargará con un array que contiene los artículos cargados anteriormente.
 
-### En caso de que la key articulosAlmacenados no tenga un "value" nulo...
+En caso de que la key articulosAlmacenados no tenga un "value" nulo...
 - Se hace un **localStorage.getItem("articulosAlmacenados")** para obtener el valor de dicha clave.
 - Se hace un **JSON.parse()** de lo anterior, para transformar la cadena JSON en un array, y cargarselo a la variable articulos
 
+## actualizarStorage()
+Luego de modificar algun objeto del array articulos, se procede a actualizar el storage para almacenar los cambios producidos. 
+Con **JSON.stringify(articulos)** obtenemos un array en formato JSON, que luego con **localStorage.setItem("articulosAlmacenados", articulosJSON)** reemplazamos al item anteriormente creado.
+
 ---
 
-# USER EXPERIENCE: SUCCESS
+# CARGA ARTICULOS JSON
+Se obtienen los articulos del archivo **articles.json** y se cargan al array *articulos*
+
+---
+
+# USER EXPERIENCE
+## SUCCESS
 Se encarga de reproducir un sonido, para indicar que los datos fueron cargados exitosamente.
 - Se referencia al elemento con ID **"success"**
 - Se le da un atributo **src**, cuyo valor será la ruta del sonido **src/audio/success.mp3"**
 - Se reproduce el sonido
+
+## TOASTIFY
+Se muestra una alerta más amigable para el usuario. La función
+**ToastifyAlert(msg)** recibe una cadena a mostrar.
+
+## SCROLL REVEAL
+Permite mostrar animaciones tanto para celulares como para computadoras/notebooks mientras se scrollea por la pantalla.
 
 ---
 
@@ -84,6 +101,9 @@ Esta función se encarga de buscar en el array de artículos según el código o
 Esta funcion permite cargar las ventas realizadas de los articulos cargados en el array.
 - Si **code o units** están vacíos, o **units** es menor/igual a 0, se muestra una alerta pidiendo ingresar datos validos
 - Si no se cumple lo anterior, se busca el artículo. En caso de encontarlo, se actualiza el **totalVendido** del artículo, y el stock.
+
+---
+
 
 
 
