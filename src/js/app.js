@@ -5,7 +5,7 @@
 | |\  | (_| | | | | |_| |  __/ | | |_| | (_) | | | | | |  __// / 
 |_| \_|\__,_|_| |_|\__,_|\___|_|  \____|\___/|_| |_| |_|\___/___|
 
-CURSO DE JAVASCRIPT - AJAX y Fetch
+CURSO DE JAVASCRIPT - PROYECTO FINAL
 Explicación del código en caso de ser necesario en archivo CODE.md 
 Explicación del proyecto en README.md
 En la carpeta test hay un lote de prueba para probar el código
@@ -44,12 +44,10 @@ let information = async () => {
         let precio = element.precio;
         let stock = element.stock;
         let index = articulos.map((art) => art.codigo).indexOf(codigo.toUpperCase());
-        console.log(index);
         if(index == -1){
             articleLoad = new Articulo(codigo,nombre,precio,stock);
             articulos.push(articleLoad);
         }
-        console.log(articulos);
     });
     muestraInventario(articulos);
 }
@@ -112,22 +110,22 @@ ScrollReveal().reveal('.appTitle', {
 });
 
 ScrollReveal().reveal('.appLoad', {
-    duration: 3000,
+    duration: 1000,
     scale: 0.85,
 });
 
 ScrollReveal().reveal('.appChange', {
-    duration: 3000,
+    duration: 1000,
     scale: 0.85,
 });
 
 ScrollReveal().reveal('.appSearch', {
-    duration: 3000,
+    duration: 1000,
     scale: 0.85,
 });
 
 ScrollReveal().reveal('.appSell', {
-    duration: 3000,
+    duration: 1000,
     scale: 0.85,
 });
 
@@ -237,7 +235,7 @@ function modificaArticulos(e) {
         modificado.innerHTML = `<p class="fw-bold">Nombre del Artículo: ${articulos[index].nombre}</p>
                                 <p>Código del Artículo: ${articulos[index].codigo}</p>
                                 <p>Stock del Artículo: ${articulos[index].stock}</p>
-                                <p>Precio del Artículo: $${articulos[index].precio}</p>
+                                <p>Precio del Artículo: ${articulos[index].precio}</p>
                                 <p class="mb-0">Total Vendido: $${articulos[index].totalVendido}</p>`
 
     ) : (ToastifyAlert("No se encontró el artículo"));
@@ -258,7 +256,7 @@ appSearch.addEventListener("submit", buscaArticulo);
 function buscaArticulo(e) {
 
     e.preventDefault();
-
+    
     let encontrado = document.querySelector(".article");
     let index;
     let articulo = document.createElement("div");
@@ -319,7 +317,6 @@ function ventaArticulos(e) {
     }
 
     let index = articulos.map((art) => art.codigo).indexOf(code.toUpperCase());
-    console.log(index);
 
     index != -1 ? (
         articulos[index].totalVendido += articulos[index].precio * units,

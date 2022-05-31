@@ -17,3 +17,8 @@ Las librerías presentes en esta versión son
 ----
 ### V2.2
 - Se añadió la funcionalidad de extraer artículos de un archivo llamado **articles.json**
+---
+### V2.3
+- Se modificó el texto LOREM
+- Se completaron las etiquetas META del HTML
+- Se agregó un FAVICON
