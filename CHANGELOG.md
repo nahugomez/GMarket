@@ -22,3 +22,6 @@ Las librerías presentes en esta versión son
 - Se modificó el texto LOREM
 - Se completaron las etiquetas META del HTML
 - Se agregó un FAVICON
+---
+### V2.3.1
+- Se modificó el archivo README.md
