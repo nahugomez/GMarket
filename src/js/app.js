@@ -35,7 +35,7 @@ let actualizarStorage = () => {
 
 /* =================== CARGA ARTICULOS JSON ================= */
 let information = async () => {
-    const response = await fetch('/src/json/articles.json');
+    const response = await fetch('src/json/articles.json');
     const arrayJSON = await response.json();
     let articleLoad;
     arrayJSON.forEach(element => {

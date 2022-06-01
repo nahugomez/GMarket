@@ -25,3 +25,6 @@ Las librerías presentes en esta versión son
 ---
 ### V2.3.1
 - Se modificó el archivo README.md
+---
+### V2.3.2
+- Se modificó la ruta de acceso al archivo articles.json (Ahora es relativa a la página mostrada, es decir, a index.html)
